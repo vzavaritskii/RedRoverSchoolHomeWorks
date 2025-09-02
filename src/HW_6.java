@@ -109,8 +109,35 @@ public class HW_6 {
         System.out.println("Задание 6");
 
 
+        // Task 8
+        System.out.println("Задание 8");
+        // Исходная строка
+        String string = "0 1 2 3 4 5 6 7 8 9";
+        // Вывод исходной строки
+        System.out.println("Исходная строка: " + string);
+        // Вывод "пирамидки" по убыванию
+        for (int i = 0; i < string.length(); i +=2) {
+            System.out.println(string.substring(0, string.length() - i));
+        }
 
+        System.out.println("---------------");
 
+        // Вывод "пирамидки" по возрастанию
+        for (int i = 1; i <= string.length(); i +=2) {
+            System.out.println(string.substring(0, i));
+        }
+        // При изменении строки (добавлении еще цифр) логика работы сломается
+        // Чтобы не сломалась, вероятно необходимо создавать массив строк и выводить
+        // через printf()
 
+        System.out.println("---------------");
+        System.out.println("Если нет исходной строки, но знаем максимальное количество цифр");
+        int maxNumber = 9;
+        for (int j = maxNumber; j >= 0; j--) {
+            for (int i = 0; i <= j; i++) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
     }
 }
