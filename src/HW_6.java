@@ -44,6 +44,69 @@ public class HW_6 {
 
 
 
+        // Task 2
+        System.out.println("Задание 2");
+        /*
+        У вас есть список адресов электронной почты.
+        Найдите все адреса с доменом gmail.com. Адреса поддельных сайтов типа myrealgmail.com не учитывать.
+        Найти самый короткий и самый длинный адреса.
+        Проверить, нет ли адресов с юзернеймом admin
+         */
+        String[] incomeEmails = {"myreailgmail.com", "bigboss@hotmail.com", "president@whitehouse.gov", "kgb@yandex.ru",
+        "superuncorrectmailgmail.com", "admin@mail.ru", "someuser@gmail.com", "justgoodmen@gmail.com", "god@bk.ru"};
+
+        String[] gmailAddresses;                  // Сюда сложим gmail-овские валидные адреса
+        String maxLengthAddress = "";             // Самый длинный адрес
+        String minLengthAddress = "";             // Самый короткий адрес
+        boolean isAdminUserPresent = false;     // Есть ли адрес с юзернейм admin (по умолчанию нет)
+
+        // Найти все адреса с доменом gmail.com
+        String tempAddresses = "";
+        for (String arg : incomeEmails) {
+            if (arg.contains("@gmail.com")) tempAddresses += arg + " ";
+        }
+        gmailAddresses = tempAddresses.split(" ");
+        System.out.println("Адреса на домене gmail: " + Arrays.toString(gmailAddresses));
+
+        // Найти самый длинный email
+        // Из задания не совсем понятно надо ли при поиске самого длинного отсеивать поддельные адреса
+        //А если надо, то по какому признаку. Сделаем допущение, что признаком будет отсутствие символа '@'
+        int tempMaxLengthAddress = 0;
+        for (String arg : incomeEmails) {
+            if (arg.contains("@")) {
+                if (arg.length() > tempMaxLengthAddress) {
+                    maxLengthAddress = arg;
+                    tempMaxLengthAddress = arg.length();
+                }
+            }
+        }
+        System.out.println("Самый длинный адрес: " + maxLengthAddress);
+
+        // Найти самый коротки email
+        int tempMinLengthAddress = Integer.MAX_VALUE;
+        for (String arg : incomeEmails) {
+            if (arg.contains("@")) {
+                if (arg.length() < tempMinLengthAddress) {
+                    minLengthAddress = arg;
+                    tempMinLengthAddress = arg.length();
+                }
+            }
+        }
+        System.out.println("Самый короткий адрес: " + minLengthAddress);
+
+        // Нет ли адресов с юзернеймом admin
+        for (String arg : incomeEmails) {
+            if (arg.startsWith("admin@")) isAdminUserPresent = true;
+        }
+        System.out.println("Есть ли адреса с юзернеймом admin: " + ((isAdminUserPresent) ? "да" : "нет"));
+        /*
+        Очевидные минусы решения - повторные итерации по массиву с исходными данными. Возможно упростить,
+        делая проверку сразу по нескольким критериям на одной итерации.
+         */
+        System.out.println();
+
+
+
         // Task 3
         System.out.println("Задание 3");
         int[][] arrayTask3 = new int[5][5];
