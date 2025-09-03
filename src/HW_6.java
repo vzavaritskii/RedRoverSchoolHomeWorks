@@ -107,6 +107,101 @@ public class HW_6 {
 
         // Task 6
         System.out.println("Задание 6");
+        // Счетчики
+        int upperCaseChars = 0;
+        int lowerCaseChars = 0;
+        int vowelLetters = 0;
+        int conconantLetters = 0;
+        int numbers = 0;
+        int punktuationsMarks = 0;
+        int whitespaceChars = 0;
+
+        String incomeStringTask = "I’m just 16,\n" +                                        // Входная строка
+                "going on\t17!";
+
+        for (char arg : incomeStringTask.toCharArray()) {
+            if (arg >= 'A' && arg <= 'Z') {                                                 // Заглавные
+                upperCaseChars += 1;
+            }
+            if (arg >= 'a' && arg <= 'z') {                                                 // Прописные
+                lowerCaseChars += 1;
+            }
+            if ((arg >= 'A' && arg <= 'Z') || (arg >= 'a' && arg <= 'z')) {                 // Гласные / Согласные
+                if ("AEIOUaeiou".indexOf(arg) != -1) {
+                    vowelLetters += 1;
+                    continue;
+                } else {
+                    conconantLetters += 1;
+                    continue;
+                }
+            }
+            if (arg >= '0' && arg <= '9') {                                                 // Цифры
+                numbers += 1;
+                continue;
+            }
+            if (".,;:!?’\"()[]{}-…".indexOf(arg) != -1) {                                   // Знаки препинания
+                punktuationsMarks += 1;
+                continue;
+            }
+            if (Character.isWhitespace(arg)) {                                              // Пробельные символы
+                whitespaceChars += 1;
+            }
+        }
+        System.out.println("В полученной строке: " + incomeStringTask);
+        System.out.printf("%-22s %-3d%n", "Заглавных букв: ", upperCaseChars);
+        System.out.printf("%-22s %-3d%n", "Прописных букв: ", lowerCaseChars);
+        System.out.printf("%-22s %-3d%n", "Гласных букв: ", vowelLetters);
+        System.out.printf("%-22s %-3d%n", "Согласных букв: ", conconantLetters);
+        System.out.printf("%-22s %-3d%n", "Цифр:  ", numbers);
+        System.out.printf("%-22s %-3d%n", "Знаков припинания: ", punktuationsMarks);
+        System.out.printf("%-22s %-3d%n", "Пробельных символов: ", whitespaceChars);
+        System.out.println();
+
+
+
+        // Task 7
+        System.out.println("Задание 7");
+        // Тестовый образец
+        String examplePassword = "Gg3%aaasdf";
+
+        // По умолчанию считаем пароль НЕвалидным
+        boolean isPasswordValid = false;            // Общая оценка пароля
+
+        boolean isPassworHasUpperLetter = false;    // Верхний регистр
+        boolean isPasswordHasLowerLetter = false;   // Нижний регистр
+        boolean isPasswordHasNumber = false;        // Цифры
+        boolean isPasswordHasSpecialChar = false;   // Спецсимволы
+        boolean isNotAllowedSimbols = true;         // Недопустимые символы
+
+        String validSimbols = "~@#$%^&*()_-+=";     // Строка с допустимыми символами
+
+        // Перебор символов пароля
+        for (char arg : examplePassword.toCharArray()) {
+            if (arg >= 'A' && arg <= 'Z') {                             // Есть заглавные буквы?
+                isPassworHasUpperLetter = true;                         // Да есть
+            } else if (arg >= 'a' && arg <= 'z') {                      // Есть строчные буквы?
+                isPasswordHasLowerLetter = true;                        // Да есть
+            } else if (arg >= '0' && arg <= '9') {                      // Есть цифры?
+                isPasswordHasNumber = true;                             // Да есть
+            } else if (validSimbols.contains(String.valueOf(arg))) {    // Есть допущенные спецсимволы?
+                isPasswordHasSpecialChar = true;                        // Да есть
+                isNotAllowedSimbols = false;                            // Других символов нет
+            } else {isNotAllowedSimbols = true;}                        // Обнаружен недопустимый символ
+        }
+        // Проврка, что все требования соблюдены
+        if (
+                (isPassworHasUpperLetter) &&                            // Верхний регистр
+                (isPasswordHasLowerLetter) &&                           // Нижний регистр
+                (isPasswordHasNumber) &&                                // Цифры
+                (isPasswordHasSpecialChar) &&                           // Допустимые символы
+                (!isNotAllowedSimbols) &&                               // Недопустимых символов нет
+                (examplePassword.length() > 7)                          // Длина 8 или более
+        ) {
+            isPasswordValid = true;                                     // Пароль валидный
+        } else isPasswordValid = false;                                 // Пароль НЕвалидный
+        System.out.println((isPasswordValid) ? "Пароль валидный" : "Пароль НЕвалидный");
+        System.out.println();
+
 
 
         // Task 8
