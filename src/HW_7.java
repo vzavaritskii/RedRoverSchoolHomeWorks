@@ -3,6 +3,16 @@ public class HW_7 {
 
     }
 
+    public static boolean isLove(final int flower1, final int flower2) {
+        return (flower1 + flower2) % 2 != 0;
+    }
+
+
+    public static String numberToString(int num) {
+        return "" + num;
+    }
+
+
     public static String countingSheep(int num) {
         if (num == 0) {
             return "";
