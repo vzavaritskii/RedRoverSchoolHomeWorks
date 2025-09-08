@@ -10,10 +10,18 @@ public class Task4 {
         // Преобразуем входное число в строку
         String numberToString = String.valueOf(number);
 
+        // Итерируемся по строке с числами
         for (int i = 0; i < numberToString.length(); i++) {
-            int digit = numberToString.charAt(i) - '0';
-            result += numbers[digit] + " ";
+            // Получаем по одной букве (цифре) из строки в виде int
+            // Вычитание '0' необходимо для корректного подсчета
+            // char '6' вернет номер сивмола в таблице ASCII, но если из него вычесть '0'
+            // (48), то получится как раз нужный номер в таблице ASCII
+            // Цифра будет номером элемента, который добавим в итоговую строку
+                        int digit = numberToString.charAt(i) - '0';
+                        // Наполняемя строку
+                        result += numbers[digit] + " ";
         }
+        // Надо обрезать пробельный символ в конце полученной строки
         return result.trim();
     }
 }
