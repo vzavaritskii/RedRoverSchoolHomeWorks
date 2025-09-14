@@ -1,6 +1,11 @@
 package HW_8;
 
 public class Task4 {
+
+    //public static void main(String[] args) {
+    //    int a = 12345;
+    //    int b =
+    //}
     public static String getStringFromNumber (int number) {
         // Строка, которую будем наполнять словами (цифрами)
         String result = "";
@@ -23,5 +28,12 @@ public class Task4 {
         }
         // Надо обрезать пробельный символ в конце полученной строки
         return result.trim();
+    }
+
+    public static void main(String[] args) {
+        char a = 'm';
+        char b = 'a';
+        int c = a - b;
+        System.out.println(c);
     }
 }
